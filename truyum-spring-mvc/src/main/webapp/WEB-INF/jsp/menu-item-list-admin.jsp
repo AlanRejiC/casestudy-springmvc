@@ -7,12 +7,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <html>
        <head>
-           <link rel="stylesheet" type="text/css" href="style/style.css">
+           <style>
+			<%@ include file="style.css" %>
+			</style>
        </head>
        <body>
            <div class="header">
             <img src="image/Capture.JPG" style="float:left" height="55">
-               <a href="menu-item-list-admin.html" >Menu</a>
+               <a href="show-menu-list-admin" >Menu</a>
            </div>
            <br>
            <br>

@@ -3,25 +3,27 @@ package com.cognizant.truyum.model;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MenuItem {
-	public MenuItem() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		ApplicationContext xml=new ClassPathXmlApplicationContext("spring-config.xml");
-		SimpleDateFormat formatter =(SimpleDateFormat) xml.getBean("sdf");
-		return "MenuItem [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", active="
-				+ active + ", freeDelivery=" + freeDelivery + ", dateOfLaunch=" + formatter.format(dateOfLaunch) + "]";
-	}
+
 	private long id;
-	private String name,category;
+	@NotBlank(message="Title is required")
+	@Size(min=2,max=65,message="Title should have 2 to 65 characters")
+	private String name;
+	private String category;
+	@NotNull(message="Price is required")
+	@Pattern(regexp="^[0-9]*$")
 	private float price;
-	private boolean active,freeDelivery;
+	private boolean active;
+	private boolean freeDelivery;
+	@NotNull(message="Launch Date Required")
 	private Date dateOfLaunch;
 	public long getId() {
 		return id;
@@ -98,7 +100,16 @@ public class MenuItem {
 	}
 	
 	
-	
+	public MenuItem() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		
+		return "MenuItem [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", active="
+				+ active + ", freeDelivery=" + freeDelivery + ", dateOfLaunch=" + (dateOfLaunch) + "]";
+	}
 	
 	
 }

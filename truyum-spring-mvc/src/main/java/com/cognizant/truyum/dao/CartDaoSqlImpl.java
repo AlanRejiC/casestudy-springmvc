@@ -7,9 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.cognizant.truyum.model.Cart;
 import com.cognizant.truyum.model.MenuItem;
 
+@Component
 public class CartDaoSqlImpl implements CartDao{
 
 	@Override
@@ -37,7 +40,7 @@ public class CartDaoSqlImpl implements CartDao{
 		Cart c=new Cart(lst,0);
 		MenuItem mm=null;
 		try {
-			PreparedStatement ps=con.prepareStatement("select id,name,category,price,date_of_launch,active,free_delivery from cart,menu where cart.ct_menu_id=menu.id and ct_user_id=?");
+			PreparedStatement ps=con.prepareStatement("select user_id,name,category,price,date,active,freedelivery from cart,menu where cart.ct_menu_id=menu.user_id and ct_user_id=?");
 			ps.setLong(1, userId);
 			ResultSet rs=ps.executeQuery();
 			ps.clearParameters();
@@ -53,7 +56,7 @@ public class CartDaoSqlImpl implements CartDao{
 		}
 		double tot=0;
 		try {
-			PreparedStatement ps=con.prepareStatement("select sum(price) from cart,menu where cart.ct_menu_id=menu.id and ct_user_id=?");
+			PreparedStatement ps=con.prepareStatement("select sum(price) from cart,menu where cart.ct_menu_id=menu.user_id and ct_user_id=?");
 			ps.setLong(1, userId);
 			ResultSet rs=ps.executeQuery();
 			ps.clearParameters();

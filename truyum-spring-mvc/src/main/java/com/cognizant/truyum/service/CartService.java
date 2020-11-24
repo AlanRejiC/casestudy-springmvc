@@ -16,7 +16,7 @@ import com.cognizant.truyum.model.MenuItem;
 @Service("cartService")
 public class CartService {
 
-	
+	@Autowired
 	private CartDao cartDao;
 	
 	public CartDao getCartDao() {
@@ -28,18 +28,18 @@ public class CartService {
 		this.cartDao=cartDao;
 	}
 	
-	List<MenuItem> getAllCartItems(long userId) throws CartEmptyException
+	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException
 	{
 			return cartDao.getAllCartItems(userId);
 	}
 	
-	void addCartItem(long userId,long menuItemId)
+	public void addCartItem(long userId,long menuItemId)
 	{
 		//System.out.println(cartDao);
 		cartDao.addCartItem(userId, menuItemId);
 	}
 	
-	void removeCartItem(long userId,long menuItemId)
+	public void removeCartItem(long userId,long menuItemId)
 	{
 		cartDao.removeCartItem(userId, menuItemId);
 	}

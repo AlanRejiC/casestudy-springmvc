@@ -1,0 +1,77 @@
+body {
+    margin :0px;
+}
+
+.logo {
+      background-image: url("image/capture.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 0px;
+      margin: 0px;
+      width: 150px;
+      height: 50px;
+}
+.header {
+    background-color: #315590;
+    text-align: center;
+    padding: 60px;
+}
+
+p {
+    display: inline;
+
+    color: white;
+}
+
+#hlink {
+    float: right;
+    color: white;
+    text-decoration: underline;
+    text-align: center;
+
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+#head {
+    font-weight: bold;
+}
+
+thead {
+    font-weight: bold;
+}
+
+#price1,#price2,#price3,#price4,#price5 {
+    text-align: right;
+}
+
+h1 {
+    padding-left: 250px;
+}
+
+#submit1 {
+    background-color: #315590;
+    width: 10em; height:4em;
+    color: white;
+}
+
+#approved {
+    color: greenyellow;
+    font-size: 40px;
+    padding-left: 88px;
+}
+
+footer {
+  background-color: #bfbfbf;
+  padding: 33px;
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
+
+

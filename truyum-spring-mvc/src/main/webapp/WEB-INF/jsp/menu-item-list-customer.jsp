@@ -7,12 +7,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="stylesheet" href="style/style.css">
+ <style>
+			<%@ include file="style.css" %>
+			</style>
 </head>
 <body>
 	<div class="header">
 		<img src="image/Capture.JPG" style="float: left" height="55"> <a
-			href="cart.html">Cart</a> <a href="menu-item-list-customer.html">Menu</a>
+			href="show-cart" style="color:white;">Cart</a> <a href="show-menu-list-customer" style="color:white;">Menu</a>
 
 	</div>
 	<br>
@@ -25,6 +27,7 @@
 	<br>
 	<br>
 	<h1>Menu Items</h1>
+	 <center><p id="approved"><c:if test="${status}">Item added to cart successfully</c:if></p></center>            <br>
 	<table>
 		<tr id="head">
 			<td><label for="mname">Name</label></td>
@@ -42,7 +45,7 @@
 				<td>${item.dateOfLaunch}</td>
 				<td>${item.category}</td>
 				<td>${item.freeDelivery}</td>
-				<td><a>Edit</a>
+				<td><a href="/add-to-cart?menuItemId=${item.id}">Add to Cart</a></td>
 			</tr>
 		</c:forEach>
 	</table>
