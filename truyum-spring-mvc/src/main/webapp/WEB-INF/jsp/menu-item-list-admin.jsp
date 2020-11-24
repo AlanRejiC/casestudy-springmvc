@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -32,17 +33,19 @@
                    <td><label for="category"><b>Category</b></label></td>
                    <td><label for="delivery"><b>Free Delivery</b></label></td><td><label for="edit"><b>Action</b></label></td>
                </tr>
-               <tr>
+               
             	<c:forEach var="item" items="${menuItemList}">
+            	<tr>
             	<td>${item.name}</td>
             	<td>${item.price}</td>
             	<td>${item.active}</td>
             	<td>${item.dateOfLaunch}</td>
             	<td>${item.category}</td>
             	<td>${item.freeDelivery}</td>
-            	<td><a>Edit</a>
-            	</c:forEach>
+            	<td><a href="/show-edit-menu-item?menuItemId=${item.id}">Edit</a></td>
             	</tr>
+            	</c:forEach>
+            	
            </table>
            <footer>
                <img src="image/foot.JPG" style="float:left">

@@ -46,7 +46,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao{
 		Connection con=ConnectionHandler.getConnection();
 		List<MenuItem> lst=new ArrayList<MenuItem>();
 		try {
-			PreparedStatement ps=con.prepareStatement("Select * from menu where active=? && date_of_launch<?");
+			PreparedStatement ps=con.prepareStatement("Select * from menu where active=? && date<?");
 			ps.setInt(1, 1);
 			//Date date=new Date();
 			ps.setDate(2,java.sql.Date.valueOf(java.time.LocalDate.now()));
@@ -103,7 +103,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao{
 			ResultSet rs=ps.executeQuery();
 			while(rs.next())
 			{	
-				mm=new MenuItem(rs.getLong(1),rs.getString(2),rs.getString(3),rs.getFloat(4),rs.getBoolean(6),rs.getBoolean(7),rs.getDate(5));
+				mm=new MenuItem(rs.getLong(1),rs.getString(2),rs.getString(3),rs.getFloat(4),rs.getBoolean(5),rs.getBoolean(6),rs.getDate(7));
 				if(mm.getId()==menuItemId)
 					break;
 			}
