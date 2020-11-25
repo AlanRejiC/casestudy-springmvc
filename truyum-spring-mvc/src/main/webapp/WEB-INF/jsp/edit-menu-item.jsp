@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML>
     <html>
        <head>
@@ -24,6 +25,7 @@
             <br>
             <h1>Edit Menu Item</h1>
             <form:form class="form-edit-menu" modelAttribute="menuItem" name="menuItemForm" method="POST" action="edit-menu-item-status">
+                <form:hidden path="id" />
                 <table>
                     <tr id="head">
                         <td><label for="pname">Name</label></td></tr>
@@ -44,7 +46,7 @@
                         <td><input type="text" name="price" id="price" required value="${menuItem.price}"></td>
                         <td>Yes<input type="radio" name="launch" id="launch1" value="yes" <c:if test="${menuItem.active}">checked</c:if> /> 
                             No<input type="radio" name="launch" id="launch2" value="no" <c:if test="${not menuItem.active}">checked</c:if> /></td>
-                        <td><form:input path="dateOfLaunch" type="date" name="dateOfLaunch" id="dateOfLaunch" value="${menuItem.dateOfLaunch}" /></td>
+                        <td><form:input path="dateOfLaunch" type="text" name="dateOfLaunch" id="dateOfLaunch" value="${menuItem.dateOfLaunch}" /></td>
                         <td><select name="category" id="category" >
 							<c:forEach var="x" items="${categoryList}">
 								<option value="${x}">${x}</option>

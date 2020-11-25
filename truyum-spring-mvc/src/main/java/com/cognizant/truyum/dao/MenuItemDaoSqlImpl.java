@@ -72,18 +72,20 @@ public class MenuItemDaoSqlImpl implements MenuItemDao{
 		Connection con=ConnectionHandler.getConnection();
 		List<MenuItem> lst=new ArrayList<MenuItem>();
 		try {
-			PreparedStatement ps=con.prepareStatement("update menu set id=?,name=?,category=?,price=?,date_of_launch=?,active=?,free_delivery=? where id=?");
+			PreparedStatement ps=con.prepareStatement("update menu set user_id=?,name=?,category=?,price=?,date=?,active=?,freedelivery=? where user_id=?");
 			ps.setLong(1, menuItem.getId());
 			ps.setString(2,menuItem.getName());
 			ps.setString(3, menuItem.getCategory());
 			ps.setFloat(4, menuItem.getPrice());
-			ps.setDate(7,new java.sql.Date(menuItem.getDateOfLaunch().getTime()));
-			ps.setBoolean(5,menuItem.isActive());
-			ps.setBoolean(6,menuItem.isFreeDelivery());
+			ps.setDate(5,new java.sql.Date(menuItem.getDateOfLaunch().getTime()));
+			ps.setBoolean(6,menuItem.isActive());
+			ps.setBoolean(7,menuItem.isFreeDelivery());
 			ps.setLong(8, menuItem.getId());
 			//System.out.println(menuItem.getId()+" "+menuItem.getName()+" "+menuItem.getCategory()+" "+menuItem.getPrice()+" "+menuItem.getDateOfLaunch());
 			ps.executeUpdate();
 			ps.clearParameters();
+			System.out.println(menuItem.getId());
+			System.out.println(menuItem.getDateOfLaunch().getTime());
 			}
 		catch(Exception e)
 		{

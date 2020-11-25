@@ -1,6 +1,6 @@
 package com.cognizant.truyum.controller;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -25,11 +25,18 @@ import com.cognizant.truyum.service.MenuItemService;
 @Controller
 public class MenuItemController {
 
+	
 	@Autowired
 	MenuItemService menuItemService;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MenuItemController.class);
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class , new CustomDateEditor(dateFormat,false));
+	}
+	
 	@GetMapping(value = "/show-menu-list-admin")
 	public String showMenuItemListAdmin(ModelMap model) {
 		LOGGER.info("Start");
@@ -70,9 +77,5 @@ public class MenuItemController {
 		return "edit-menu-item-status";
 	}
 	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class , new CustomDateEditor(dateFormat,false));
-	}
+	
 }

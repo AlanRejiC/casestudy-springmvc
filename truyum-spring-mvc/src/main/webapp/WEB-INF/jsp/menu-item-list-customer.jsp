@@ -40,11 +40,9 @@
 		<c:forEach var="item" items="${menuItemList}">
 			<tr>
 				<td>${item.name}</td>
-				<td>${item.price}</td>
-				<td>${item.active}</td>
-				<td>${item.dateOfLaunch}</td>
-				<td>${item.category}</td>
 				<td>${item.freeDelivery}</td>
+				<td>${item.price}</td>
+				<td>${item.category}</td>
 				<td><a href="/add-to-cart?menuItemId=${item.id}">Add to Cart</a></td>
 			</tr>
 		</c:forEach>
